@@ -1,0 +1,9 @@
+@import './components/card.css';
+@import './components/navbar.css';
+@import './components/star_rating';
+
+.restaurant-img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}

@@ -1,16 +1,27 @@
 <div class="container mt-4">
-  <%= image_tag "https://loremflickr.com/320/240/#{@restaurant.category}food" %>
-  <h2><%= @restaurant.name %></h2>
-  <p><%= @restaurant.address %></p>
-  <p><%= @restaurant.phone_number %></p>
-  <p><%= @restaurant.category %></p>
+  <div class="container d-flex align-items-center my-4">
+    <%= image_tag "https://loremflickr.com/320/240/#{@restaurant.category}food", class: 'restaurant-img' %>
+    <div class="restaurant-info mx-4">
+      <h2><%= @restaurant.name %></h2>
+      <p class="m-0" ><%= @restaurant.address %></p>
+      <p class="m-0"><%= @restaurant.phone_number %></p>
+      <p><strong>Category:</strong> <%= @restaurant.category.capitalize %></p>
+    </div>
+  </div>
   <h3>Reviews</h3>
   <div class="cards mt-3">
     <% if @restaurant.reviews.any? %>
       <% @restaurant.reviews.each do |review| %>
         <div class="card-product">
           <div class="card-product-infos">
-            <h2><%= '*' * review.rating %></h2>
+            <div class="d-flex">
+              <% review.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </div>
             <p><%= review.content %></p>
           </div>
         </div>

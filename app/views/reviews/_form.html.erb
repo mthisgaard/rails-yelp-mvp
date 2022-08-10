@@ -1,5 +1,9 @@
 <%= simple_form_for [@restaurant, @review] do |f| %>
-  <%= f.input :rating, collection: 0..5  %>
+  <div class="star-rating">
+    <% 5.times do |i| %>
+      <input type="radio" name="review[rating]" value="<%= i + 1 %>" <%= "checked" if i == 2 %> />
+    <% end %>
+  </div>
   <%= f.input :content%>
   <%= f.submit 'Submit review', class: 'btn btn-primary' %>
 <% end %>
