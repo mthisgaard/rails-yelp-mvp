@@ -5,7 +5,7 @@ Restaurant.destroy_all
 puts "...all restaurants are destroyed. #{Restaurant.count} restaurants left."
 
 puts 'Creating new restaurants...'
-10.times do
+13.times do
   Restaurant.create(
     name: Faker::Restaurant.name,
     address: Faker::Address.street_address,
@@ -14,3 +14,15 @@ puts 'Creating new restaurants...'
   )
 end
 puts "...#{Restaurant.count} restaurants have been created."
+
+puts 'Adding reviews to restaurants...'
+Restaurant.all.each do |restaurant|
+  rand(0..7).times do
+    Review.create(
+      rating: rand(0..5),
+      content: Faker::Restaurant.review.split('.').first + '.',
+      restaurant_id: restaurant.id
+    )
+  end
+end
+puts "...#{Review.count} reviews have been created."

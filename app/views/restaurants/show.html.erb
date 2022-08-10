@@ -28,5 +28,8 @@
       <% end %>
     <% end %>
   </div>
-  <%= link_to 'Add a review', new_restaurant_review_path(@restaurant), class: 'btn btn-primary mt-4'%>
+  <div class="container mt-5">
+    <h4>Add a review</h4>
+    <%= render 'review_form' %>
+  </div>
 </div>
