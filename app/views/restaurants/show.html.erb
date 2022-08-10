@@ -1,2 +1,21 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<div class="container mt-4">
+  <%= image_tag "https://loremflickr.com/320/240/#{@restaurant.category}food" %>
+  <h2><%= @restaurant.name %></h2>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p><%= @restaurant.category %></p>
+  <h3>Reviews</h3>
+  <div class="cards mt-3">
+    <% if @restaurant.reviews.any? %>
+      <% @restaurant.reviews.each do |review| %>
+        <div class="card-product">
+          <div class="card-product-infos">
+            <h2><%= '*' * review.rating %></h2>
+            <p><%= review.content %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= link_to 'Add a review', new_restaurant_review_path(@restaurant), class: 'btn btn-primary mt-4'%>
+</div>
